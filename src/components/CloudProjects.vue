@@ -10,7 +10,16 @@
           class="mrb-2 mb-2"
         >
           <v-card-item>
-            <v-card-title>{{ cloud_project.name }}</v-card-title>
+            <v-card-title>
+              {{ cloud_project.name }}
+              <v-chip
+                v-if="hasEnvPropertyInTags(cloud_project.tags)"
+                variant="flat"
+                :color="getEnvColorFromTags(cloud_project.tags)"
+              >
+                env={{ getEnvValueFromTags(cloud_project.tags) }}
+              </v-chip>
+            </v-card-title>
 
             <v-card-subtitle>{{ cloud_project.id }}</v-card-subtitle>
           </v-card-item>
@@ -24,23 +33,16 @@
                 >
                   <td width="100">{{ name }}</td> 
                   <td v-if="name === 'email'"><i>{{ value }}</i></td>
-                  <td v-if="name === 'created_at' && value != null"><i>{{ moment(value).format('YYYY-MM-DD') }}</i></td>
-                  <td v-else>{{ value }}</td>
-                  <!--
-                  <td v-if="name === 'tags'">
-                    <v-table>
-                      <tbody>
-                        <tr
+                  <td v-else-if="name === 'created_at' && value != null">{{ moment(value).format('DD/MM/YYYY') }}</td>
+                  <td v-else-if="name === 'tags'">
+                        <div
                           v-for="(value, name, index) in value"
                           :key="index"
                         >
-                          <td width="100">{{ name }}</td>
-                          <td>{{ value }}</td>
-                        </tr>
-                      </tbody>
-                    </v-table>
+                          {{ name }}: {{ value }}
+                        </div>
                   </td>
-                  -->
+                  <td v-else>{{ value }}</td>
                 </tr>
               </tbody>
             </v-table>
@@ -103,7 +105,16 @@
           class="ma-2"
         >
           <v-card-item>
-            <v-card-title>{{ cloud_project.name }}</v-card-title>
+            <v-card-title>
+              {{ cloud_project.name }}
+              <v-chip
+                v-if="hasEnvPropertyInTags(cloud_project.tags)"
+                variant="flat"
+                :color="getEnvColorFromTags(cloud_project.tags)"
+              >
+                env={{ getEnvValueFromTags(cloud_project.tags) }}
+              </v-chip>
+            </v-card-title>
 
             <v-card-subtitle>{{ cloud_project.id }}</v-card-subtitle>
           </v-card-item>
@@ -115,7 +126,7 @@
                   v-for="(value, name, index) in cloud_project"
                   :key="index"
                 >
-                <td width="100">{{ name }}</td> 
+                  <td width="100">{{ name }}</td> 
                   <td v-if="name === 'email'"><i>{{ value }}</i></td>
                   <td v-else-if="name === 'created_at' && value != null">{{ moment(value).format('DD/MM/YYYY') }}</td>
                   <td v-else-if="name === 'tags'">
@@ -144,7 +155,16 @@
           class="ma-2"
         >
           <v-card-item>
-            <v-card-title>{{ cloud_project.name }}</v-card-title>
+            <v-card-title>
+              {{ cloud_project.name }}
+              <v-chip
+                v-if="hasEnvPropertyInTags(cloud_project.tags)"
+                variant="flat"
+                :color="getEnvColorFromTags(cloud_project.tags)"
+              >
+                env={{ getEnvValueFromTags(cloud_project.tags) }}
+              </v-chip>
+            </v-card-title>
 
             <v-card-subtitle>{{ cloud_project.id }}</v-card-subtitle>
           </v-card-item>
@@ -156,9 +176,17 @@
                   v-for="(value, name, index) in cloud_project"
                   :key="index"
                 >
-                <td width="100">{{ name }}</td> 
+                  <td width="100">{{ name }}</td> 
                   <td v-if="name === 'email'"><i>{{ value }}</i></td>
-                  <td v-if="name === 'created_at' && value != null">{{ moment(value).format('DD/MM/YYYY') }}</td>
+                  <td v-else-if="name === 'created_at' && value != null">{{ moment(value).format('DD/MM/YYYY') }}</td>
+                  <td v-else-if="name === 'tags'">
+                        <div
+                          v-for="(value, name, index) in value"
+                          :key="index"
+                        >
+                          {{ name }}: {{ value }}
+                        </div>
+                  </td>
                   <td v-else>{{ value }}</td>
                 </tr>
               </tbody>
@@ -183,9 +211,6 @@
     useSettings,
   } from "@/api/settings/query";
 
-  const { data: cloud_projects_dummy } = useCloudProjectsDummy();
-  const { data: cloud_projects_aws } = useCloudProjectsAWS();
-  const { data: cloud_projects_gcp } = useCloudProjectsGCP();
 
   const { data: settings } = useSettings();
 
@@ -199,4 +224,36 @@
     cloudProviderGCP.value = Boolean(settings?.data?.gcp);
     cloudProviderAzure.value = Boolean(settings?.data?.azure);
   });
+
+  const { data: cloud_projects_dummy } = useCloudProjectsDummy();
+  const { data: cloud_projects_aws } = useCloudProjectsAWS();
+  const { data: cloud_projects_gcp } = useCloudProjectsGCP();
+
+  const hasEnvPropertyInTags = (tags: any) => {
+    if (tags) {
+      return tags.hasOwnProperty('env');
+    }
+    return false;
+  }
+
+  const getEnvValueFromTags = (tags: any) => {
+    if (tags) {
+      return tags.env;
+    }
+    return '';
+  }
+
+  const getEnvColorFromTags = (tags: any) => {
+    if (tags) {
+      if (['dev'].includes(tags.env)) {
+        return 'green';
+      } else if (['staging'].includes(tags.env)) {
+        console.log('tags.env', tags.env);
+        return 'orange';
+      } else if (['prod'].includes(tags.env)) {
+        return 'red';
+      }
+    }
+    return 'grey';
+  }
 </script>
