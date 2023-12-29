@@ -11,6 +11,11 @@ const routes = [
         name: 'Projects',
         component: () => import('@/views/CloudProjects.vue'),
       },
+      {
+        path: '/settings',
+        name: 'Settings',
+        component: () => import('@/views/Settings.vue'),
+      },
     ],
   },
 ]

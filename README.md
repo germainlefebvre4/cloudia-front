@@ -1,6 +1,16 @@
-# Cloudia
+# Cloudia - Front
 
-## Build
+This repository contains the frontend application for the Cloudia project.
+
+---
+
+Project overview: [https://github.com/germainlefebvre4/cloudia-project](https://github.com/germainlefebvre4/cloudia-project)
+
+Documentation: [https://cloudia.readthedocs.io/](https://cloudia.readthedocs.io/)
+
+---
+
+## Getting started
 
 ```bash
 docker build -t germainlefebvre4/cloudia-front:0.3.0 --build-arg FRONTEND_ENV=production .
