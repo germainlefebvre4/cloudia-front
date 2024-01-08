@@ -4,7 +4,7 @@
     <v-card
     flat
     title="Projects"
-  >
+    >
 
     <template v-slot:text>
       <v-text-field
@@ -17,14 +17,53 @@
       ></v-text-field>
     </template>
 
+    <v-card flat title="Filters">
+    <v-card flat class="d-flex flex">
+      <v-card flat title="Providers">
+        <v-checkbox
+          v-model="checkboxCloudProviders"
+          label="(no provider)"
+          value="null"
+          @change="filterProjects()"
+        ></v-checkbox>
+        <v-checkbox
+          v-model="checkboxCloudProviders"
+          label="AWS"
+          value="aws"
+          @change="filterProjects()"
+        ></v-checkbox>
+        <v-checkbox
+          v-model="checkboxCloudProviders"
+          label="GCP"
+          value="gcp"
+          @change="filterProjects()"
+        ></v-checkbox>
+        <v-checkbox
+          v-model="checkboxCloudProviders"
+          label="Azure"
+          value="azure"
+          @change="filterProjects()"
+        ></v-checkbox>
+      </v-card>
+      <v-card flat title="State">
+        <v-switch
+          v-model="checkboxProjectState"
+          label="Active"
+          value="ACTIVE"
+          @change="filterProjects()"
+        ></v-switch>
+      </v-card>
+    </v-card>
+    </v-card>
+
     <v-data-table
-      :items="cloud_projects?.data.projects"
+      :items="projects_search?.value"
       :search="search"
       :items-per-page="itemsPerPage"
       :sort-by="sortBy"
     >
       <template v-slot:item.provider="{ value }">
-        <img :src="getProjectProviderIcon(value)" width="30" :title="value" :alt="value"/>
+        <img :src="getProjectProviderIcon(value)" width="30" :title="getProjectProviderTitle(value)" :alt="getProjectProviderTitle(value)"/>
       </template>
       <template v-slot:item.email="{ value }">
         <i>{{ value }}</i>
@@ -49,7 +88,7 @@
 </template>
 
 <script lang="ts" setup>
-  import { ref } from 'vue';
+  import { computed, inject, ref, toRaw, watch } from 'vue';
   import {
     useCloudProjectsAll,
   } from "@/api/cloud_projects/query";
@@ -58,7 +97,8 @@
   import icon_aws from '../assets/aws.svg'
   import icon_gcp from '../assets/gcp.svg'
   import icon_azure from '../assets/azure.svg'
-  import icon_other from '../assets/dummy.svg'
+  import icon_noCloud from '../assets/no-cloud.svg'
+import { computedAsync } from '@vueuse/core';
   const icons_list = ['dummy', 'aws', 'gcp', 'azure']
 
   // Cloud Projects
@@ -68,7 +108,7 @@
   const sortBy = [{ key: 'provider', order: 'asc' }];
   const itemsPerPage = 10;
 
-  // Cloud Providers Icons
+  // Cloud Projects - Providers
   const getProjectProviderIcon = (provider: string) => {
     if (provider === 'dummy') {
       return icon_dummy;
@@ -79,7 +119,15 @@
     } else if (provider === 'azure') {
       return icon_azure;
     } else {
-      return icon_other;
+      return icon_noCloud;
+    }
+  }
+
+  const getProjectProviderTitle = (provider: string) => {
+    if (provider != null) {
+      return provider;
+    } else {
+      return 'No Cloud Provider';
     }
   }
 
@@ -97,5 +145,43 @@
 
   // Data Table - Search
   const search = ref('');
+
+  // Data Table - Checkbox
+  const checkboxCloudProviders= ref(['aws', 'gcp', 'azure']);
+  const checkboxProjectState = ref(['ACTIVE']);
+  let projects_search = ref();
+  projects_search.value = computed(() => {
+    return toRaw(cloud_projects?.value?.data?.projects);
+  });
+  
+  const filterProjects = () => {
+    const projects = cloud_projects.value.data.projects.filter((project: any) => {
+      let selectCloudProvider = false, selectProjectState = false;
+      if (project.provider != null) {
+        for (const cloudProvider of toRaw(checkboxCloudProviders.value)) {
+          if (project.provider.includes(cloudProvider)) {
+            selectCloudProvider = true;
+          }
+        }
+      } else {
+        if (checkboxCloudProviders.value.includes('null')) {
+          selectCloudProvider = true;
+        }
+      }
+      if (project.state != null) {
+        for (const projectState of toRaw(checkboxProjectState.value)) {
+          if (project.state.includes(projectState)) {
+            selectProjectState = true;
+          }
+        }
+      }
+      return selectCloudProvider && selectProjectState;
+    });
+    const projects2: any[] = [];
+    projects.forEach((element: any) => {
+      projects2.push(toRaw(element));
+    });
+    projects_search.value = ref(toRaw(projects));
+  }
 
 </script>
