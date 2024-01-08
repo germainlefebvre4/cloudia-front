@@ -3,5 +3,6 @@
 </template>
 
 <script lang="ts" setup>
-  import CloudProjects from '@/components/CloudProjects.vue'
+  import CloudProjects from '@/components/CloudProjectsDataTable.vue'
+  // import CloudProjects from '@/components/CloudProjects.vue'
 </script>
