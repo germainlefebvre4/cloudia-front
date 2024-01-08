@@ -5,6 +5,7 @@ import {
   useQuery,
 } from "@tanstack/vue-query"
 import {
+  fetchCloudProjectsAll,
   fetchCloudProjectsDummy,
   fetchCloudProjectsAWS,
   fetchCloudProjectsGCP,
@@ -12,6 +13,13 @@ import {
 } from "./cloud_projects";
 import { IParams } from "@/types/cloud_projects.types";
 
+
+export const useCloudProjectsAll = () => {
+  return useQuery({
+    queryKey: ["cloud_projects_all"],
+    queryFn: fetchCloudProjectsAll,
+  });
+};
 
 export const useCloudProjectsDummy = () => {
   return useQuery({
