@@ -203,7 +203,6 @@
       if (['dev'].includes(tags.env)) {
         return 'green';
       } else if (['staging'].includes(tags.env)) {
-        console.log('tags.env', tags.env);
         return 'orange';
       } else if (['prod'].includes(tags.env)) {
         return 'red';

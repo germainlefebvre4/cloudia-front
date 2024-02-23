@@ -1,5 +1,5 @@
 <template>
-    <v-card flat class="align-center ml-5">
+    <v-card flat class="align-center ml-5 pt-5">
       <v-card-title>
         <h1>
           {{ cloud_project?.data?.name }} <v-chip :color="getProjectStateColor(cloud_project?.data?.state)">{{ cloud_project?.data?.state }}</v-chip>
@@ -15,7 +15,7 @@
                 <v-col cols="12" md="1" class="d-flex align-center justify-center">
                   <img :src="getProjectProviderIcon(cloud_project?.data?.provider)" width="100px" :title="getProjectProviderTitle(cloud_project?.data?.provider)" :alt="getProjectProviderTitle(cloud_project?.data?.provider)"/>
                 </v-col>
-              <v-col cols="12" md="2">
+              <v-col cols="12" md="3">
                 <v-card flat>
                   <v-card-text>
                     <v-row>
@@ -57,7 +57,7 @@
                   </v-card-text>
                 </v-card>
               </v-col>
-              <v-col cols="12" md="6">
+              <v-col cols="12" md="5">
                 <v-card flat>
                   <v-card-title class="pl-1">
                     Tags
@@ -88,7 +88,8 @@
                       Current Month
                     </v-card-subtitle>
                     <v-card-text align="center">
-                      {{ getCloudCardPropertyLabel(cloud_billing_m0?.data?.total, cloud_billing_m0?.data?.unit) }}
+                      <v-progress-circular v-if="!isDataLoaded_billing_m0" color="primary" indeterminate></v-progress-circular>
+                      <div v-if="isDataLoaded_billing_m0 && !isDataMissing_billing_m0">{{ getCloudCardPropertyLabel(cloud_billing_m0?.data?.total, cloud_billing_m0?.data?.unit) }}</div>
                     </v-card-text>
                   </v-card>
                   <v-card class="ma-2 pa-2">
@@ -99,7 +100,8 @@
                       Month-1
                     </v-card-subtitle>
                     <v-card-text align="center">
-                      {{ getCloudCardPropertyLabel(cloud_billing_m1?.data?.total, cloud_billing_m1?.data?.unit) }}
+                      <v-progress-circular v-if="!isDataLoaded_billing_m1" color="primary" indeterminate></v-progress-circular>
+                      <div v-if="isDataLoaded_billing_m1 && !isDataMissing_billing_m1">{{ getCloudCardPropertyLabel(cloud_billing_m1?.data?.total, cloud_billing_m1?.data?.unit) }}</div>
                     </v-card-text>
                   </v-card>
                   <v-card class="ma-2 pa-2">
@@ -110,7 +112,8 @@
                       Month-2
                     </v-card-subtitle>
                     <v-card-text align="center">
-                      {{ getCloudCardPropertyLabel(cloud_billing_m2?.data?.total, cloud_billing_m2?.data?.unit) }}
+                      <v-progress-circular v-if="!isDataLoaded_billing_m2" color="primary" indeterminate></v-progress-circular>
+                      <div v-if="isDataLoaded_billing_m2 && !isDataMissing_billing_m2">{{ getCloudCardPropertyLabel(cloud_billing_m2?.data?.total, cloud_billing_m2?.data?.unit) }}</div>
                     </v-card-text>
                   </v-card>
                 </v-card-text>
@@ -136,7 +139,8 @@
                       Current Month
                     </v-card-subtitle>
                     <v-card-text align="center">
-                      {{ getCloudCardPropertyLabel(cloud_carbon_m0?.data?.total, cloud_carbon_m0?.data?.unit) }}
+                      <v-progress-circular v-if="!isDataLoaded_carbon_m0" color="primary" indeterminate></v-progress-circular>
+                      <div v-if="isDataLoaded_carbon_m0 && !isDataMissing_carbon_m0">{{ getCloudCardPropertyLabel(cloud_carbon_m0?.data?.total, cloud_carbon_m0?.data?.unit) }}</div>
                     </v-card-text>
                   </v-card>
                   <v-card class="ma-2 pa-2">
@@ -147,7 +151,8 @@
                       Month-1
                     </v-card-subtitle>
                     <v-card-text align="center">
-                      {{ getCloudCardPropertyLabel(cloud_carbon_m1?.data?.total, cloud_carbon_m1?.data?.unit) }}
+                      <v-progress-circular v-if="!isDataLoaded_carbon_m1" color="primary" indeterminate></v-progress-circular>
+                      <div v-if="isDataLoaded_carbon_m1 && !isDataMissing_carbon_m1">{{ getCloudCardPropertyLabel(cloud_carbon_m1?.data?.total, cloud_carbon_m1?.data?.unit) }}</div>
                     </v-card-text>
                   </v-card>
                   <v-card class="ma-2 pa-2">
@@ -158,7 +163,8 @@
                       Month-2
                     </v-card-subtitle>
                     <v-card-text align="center">
-                      {{ getCloudCardPropertyLabel(cloud_carbon_m2?.data?.total, cloud_carbon_m2?.data?.unit) }}
+                      <v-progress-circular v-if="!isDataLoaded_carbon_m2" color="primary" indeterminate></v-progress-circular>
+                      <div v-if="isDataLoaded_carbon_m2 && !isDataMissing_carbon_m2">{{ getCloudCardPropertyLabel(isDataLoaded_carbon_m2?.data?.total, isDataLoaded_carbon_m2?.data?.unit) }}</div>
                     </v-card-text>
                   </v-card>
                 </v-card-text>
@@ -245,6 +251,50 @@
     Number(date_m2.getMonth() + 1),
   );
 
+  // Promise Waiters
+  const isDataLoaded_billing_m0 = ref(false);
+  const isDataMissing_billing_m0 = ref(false);
+  watch([cloud_billing_m0], () => {
+    if (cloud_billing_m0) {
+      isDataLoaded_billing_m0.value = true;
+    }
+  });
+  const isDataLoaded_billing_m1 = ref(false);
+  const isDataMissing_billing_m1 = ref(false);
+  watch([cloud_billing_m0], () => {
+    if (cloud_billing_m0) {
+      isDataLoaded_billing_m1.value = true;
+    }
+  });
+  const isDataLoaded_billing_m2 = ref(false);
+  const isDataMissing_billing_m2 = ref(false);
+  watch([cloud_billing_m0], () => {
+    if (cloud_billing_m0) {
+      isDataLoaded_billing_m2.value = true;
+    }
+  });
+  const isDataLoaded_carbon_m0 = ref(false);
+  const isDataMissing_carbon_m0 = ref(false);
+  watch([cloud_billing_m0], () => {
+    if (cloud_billing_m0) {
+      isDataLoaded_carbon_m0.value = true;
+    }
+  });
+  const isDataLoaded_carbon_m1 = ref(false);
+  const isDataMissing_carbon_m1 = ref(false);
+  watch([cloud_billing_m0], () => {
+    if (cloud_billing_m0) {
+      isDataLoaded_carbon_m1.value = true;
+    }
+  });
+  const isDataLoaded_carbon_m2 = ref(false);
+  const isDataMissing_carbon_m2 = ref(false);
+  watch([cloud_billing_m0], () => {
+    if (cloud_billing_m0) {
+      isDataLoaded_carbon_m2.value = true;
+    }
+  });
+
   // Cloud Projects - Providers
   const getProjectProviderIcon = (provider: string) => {
     if (provider === 'dummy') {
@@ -302,7 +352,7 @@
     if (total) {
       return `${total} ${unit}`;
     } else {
-      return 'Data unavailable';
+      return 'No data';
     }
   }
 

@@ -235,7 +235,6 @@ import { computedAsync } from '@vueuse/core';
   }
 
   const clickGoToProjectDetails = (provider: any, project_id: any) => {
-    console.log('clickGoToProjectDetails', provider, project_id);
     router.push({ name: 'Project Details', params: { provider: provider, project_id: project_id } });
   }
 
