@@ -12,7 +12,9 @@
           v-model="cloudProviderDummy"
           label="Dummy Cloud Provider"
           color="primary"
+          @change="setSettingsCloudProviders('dummy', cloudProviderDummy)"
         ></v-switch>
+        {{ cloudProviderDummy }}
 
         <v-switch
           v-model="cloudProviderAWS"
@@ -34,6 +36,11 @@
         ></v-switch>
       </v-card-text>
     </v-card>
+
+    <recursive-card
+        :node="localSettings"
+    />
+
 </template>
 
 <script lang="ts" setup>
@@ -49,11 +56,33 @@
   const cloudProviderAWS = ref(false);
   const cloudProviderGCP = ref(false);
   const cloudProviderAzure = ref(false);
+  const localSettings = ref(Object([{path: 'test', children: [{path: 'test2', children: []}]}]));
   watch(settings, (settings) => {
     cloudProviderDummy.value = Boolean(settings?.data?.dummy);
     cloudProviderAWS.value = Boolean(settings?.data?.aws);
     cloudProviderGCP.value = Boolean(settings?.data?.gcp);
     cloudProviderAzure.value = Boolean(settings?.data?.azure);
+    localSettings.value = settings?.data;
+    console.log(localSettings.value)
+    console.log(settings)
+    console.log(settings?.data)
   });
+
+  const setSettingsCloudProviders = (cloud_provider: string, value: any) => {
+    // setSettings({cloud_provider: value});
+    
+    value = !value;
+    cloudProviderDummy.value = !value;
+    console.log(cloudProviderDummy.value)
+
+    // console.log(cloudProviderDummy.value)
+    // cloudProviderDummy.value = !cloudProviderDummy.value;
+    // console.log(cloudProviderDummy.value)
+
+    // console.log(cloud_provider, cloudProviderDummy.value);
+  }
+
+  import RecursiveCard from "@/components/RecursiveCard.vue";
+
 
 </script>

@@ -5,10 +5,17 @@ export interface ISettingsCloudProviders {
 }
 
 export interface ISettings {
-  // cloud_providers: ISettingsCloudProviders[];
-  aws: boolean;
-  gcp: boolean;
-  azure?: boolean;
+  path: boolean;
+  children: ISetting[];
+}
+export interface ISetting {
+  id?: number;
+  key?: string;
+  value?: string;
+  type?: string;
+  category?: string;
+  description?: string;
+  children?: ISetting[];
 }
 
 export interface IParams {

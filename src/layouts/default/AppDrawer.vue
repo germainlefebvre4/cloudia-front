@@ -45,8 +45,18 @@
         </v-list-group>
     </v-list>
 
+    <v-divider></v-divider>
 
     <template v-slot:append>
+      <v-list density="compact" nav>
+      <v-list-item value="Settings" :to="{ name: 'Settings' }" exact>
+        <template v-slot:prepend="{ isActive }">
+          <v-icon>mdi-cog</v-icon>
+        </template>
+        <v-list-item-title>Settings</v-list-item-title>
+      </v-list-item>
+    </v-list>
+
       <v-divider></v-divider>
       <v-list density="compact" nav>
         <v-list-item value="Documentation" :to="{ name: 'Documentation' }" exact>

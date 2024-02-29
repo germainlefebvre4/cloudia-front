@@ -37,6 +37,11 @@
 
   const items = [
     {
+      title: 'Settings',
+      icon: 'mdi-cloud-outline',
+      to: { name: 'Settings' },
+    },
+    {
       title: 'About',
       icon: 'mdi-cloud-outline',
       to: { name: 'About' },
