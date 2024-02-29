@@ -20,9 +20,18 @@
         </template>
         <v-list-item-title>Cloud Projects</v-list-item-title>
       </v-list-item>
-      </v-list>
+    </v-list>
 
-      <v-divider></v-divider>
+    <v-divider></v-divider>
+
+    <v-list density="compact" nav>
+      <v-list-item value="Billing" :to="{ name: 'Billing' }" exact>
+        <template v-slot:prepend="{ isActive }">
+          <v-icon>mdi-currency-usd</v-icon>
+        </template>
+        <v-list-item-title>Billing Overview</v-list-item-title>
+      </v-list-item>
+    </v-list>
 
 
     <template v-slot:append>
