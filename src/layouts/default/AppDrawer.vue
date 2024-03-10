@@ -24,13 +24,25 @@
 
     <v-divider></v-divider>
 
-    <v-list density="compact" nav>
-      <v-list-item value="Billing" :to="{ name: 'Billing' }" exact>
-        <template v-slot:prepend="{ isActive }">
-          <v-icon>mdi-currency-usd</v-icon>
+    <v-list density="compact" nav v-model:opened="open">
+      <v-list-group value="Billing">
+        <template v-slot:activator="{ props }">
+          <v-list-item
+            v-bind="props"
+            prepend-icon="mdi-currency-usd"
+            title="Billing"
+          ></v-list-item>
         </template>
-        <v-list-item-title>Billing Overview</v-list-item-title>
-      </v-list-item>
+
+          <v-list-item
+            v-for="(item, i) in cloud_providers"
+            :key="i"
+            :prepend-icon="item.icon"
+            :title="item.title"
+            :value="item.slug"
+            :to="{ name: item.link, params: { providerName: item.slug } }"
+          ></v-list-item>
+        </v-list-group>
     </v-list>
 
 
@@ -61,4 +73,26 @@
   
   const drawer = ref(true);
   const rail = ref(false);
+
+  const open = ['Billing'];
+  const cloud_providers = [
+    {
+      title: 'All providers',
+      slug: 'providers',
+      icon: 'mdi-earth',
+      link: 'Billing for all Providers',
+    },
+    {
+      title: 'AWS',
+      slug: 'aws',
+      icon: 'mdi-aws',
+      link: 'Billing By Provider',
+    },
+    {
+      title: 'GCP',
+      slug: 'gcp',
+      icon: 'mdi-google-cloud',
+      link: 'Billing By Provider',
+    }
+  ];
 </script>

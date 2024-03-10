@@ -64,10 +64,28 @@ const routes = [
       {
         path: '/billing',
         name: 'Billing',
-        component: () => import('@/views/CloudBillingOverview.vue'),
-        meta: {
-          title: 'Cloudia - Billing',
-        },
+        // component: () => import('@/views/CloudBillingOverview.vue'),
+        // meta: {
+        //   title: 'Cloudia - Billing',
+        // },
+        children: [
+          {
+            path: ':providerName',
+            name: 'Billing By Provider',
+            component: () => import('@/views/CloudBillingByProvider.vue'),
+            meta: {
+              title: 'Cloudia - Billing by Provider',
+            },
+          },
+          {
+            path: 'providers',
+            name: 'Billing for all Providers',
+            component: () => import('@/views/CloudBillingOverview.vue'),
+            meta: {
+              title: 'Cloudia - Billing',
+            },
+          },
+        ]
       },
       {
         path: '/settings',
