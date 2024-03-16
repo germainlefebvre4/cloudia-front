@@ -18,6 +18,8 @@ import App from './App.vue'
 // Composables
 import { createApp } from 'vue'
 
+
+
 const app = createApp(App);
 const pinia = createPinia();
 
@@ -26,5 +28,10 @@ app.use(router);
 app.use(VueQueryPlugin);
 
 registerPlugins(app)
+
+// Vue Datepicker
+import VueDatePicker from '@vuepic/vue-datepicker';
+import '@vuepic/vue-datepicker/dist/main.css'
+app.component('VueDatePicker', VueDatePicker);
 
 app.mount('#app')

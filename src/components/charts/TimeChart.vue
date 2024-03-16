@@ -1,9 +1,10 @@
 <script setup lang="ts">
 const props = defineProps({
     datapoints: Object,
+    data: Object,
 });
 
-import { watch } from 'vue';
+import { ref, watch } from 'vue';
 import {
   Chart as ChartJS,
   ChartOptions,
@@ -64,54 +65,26 @@ const chartOptions = {
       },
     },
   },
+  responsive: true,
 }
 
-
-// import {IChartDataStructure} from '@/types/chart.types'
 
 let loaded = false
-let myDatasets: ChartDataset[] = []
-let myChartData: ChartData = {
-  datasets: myDatasets,
-}
+const myChartData = ref<ChartData<'line'>>({
+  datasets: []
+})
 
 watch(props, (value) => {
-  for(let i = 0; i < value.datapoints.length; i++){
+  for(let i = 0; i < value.data?.data.length; i++){
     let myarray: ChartDataset = {
-      label: value.datapoints[i].label,
-      data: value.datapoints[i].data,
+      label: value.data?.data[i].label,
+      data: value.data?.data[i].data,
       backgroundColor: '#' + Math.floor(Math.random() * 16777215).toString(16),
     }
-    myDatasets.push(myarray)
+    myChartData.value.datasets.push(myarray)
   }
   loaded = true
 })
-
-
-// const chartData = {
-//   datasets: [
-//     {
-//       label: 'My First Dataset',
-//       data: [
-//         { x: "2023-09-01T00:00:00.000000", y: 300 },
-//         { x: "2023-10-01T00:00:00.000000", y: 500 },
-//         { x: "2023-11-01T00:00:00.000000", y: 900 },
-//         { x: "2023-12-01T00:00:00.000000", y: 750 },
-//       ],
-//       backgroundColor: '#FF6384',
-//     },
-//     {
-//       label: 'My Second Dataset',
-//       data: [
-//         { x: "2023-09-01T00:00:00.000000", y: 100 },
-//         { x: "2023-10-01T00:00:00.000000", y: 800 },
-//         { x: "2023-11-01T00:00:00.000000", y: 700 },
-//         { x: "2023-12-01T00:00:00.000000", y: 600 },
-//       ],
-//       backgroundColor: '#36A2EB',
-//     },
-//   ]
-// }
 </script>
 
 <template>
