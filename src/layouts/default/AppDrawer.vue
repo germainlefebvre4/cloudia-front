@@ -74,7 +74,7 @@
   const drawer = ref(true);
   const rail = ref(false);
 
-  const open = ['Billing'];
+  const open: Array<string> = [];
   const cloud_providers = [
     {
       title: 'All providers',
