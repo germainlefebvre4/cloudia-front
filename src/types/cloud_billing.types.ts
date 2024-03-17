@@ -5,3 +5,13 @@ export interface ICloudBilling {
   cost_total: number;
   cost_unit: string;
 }
+
+export interface IChartDataPoint {
+  x: string;
+  y: number;
+}
+
+export interface ICloudBillingForChart {
+  label: string;
+  data: IChartDataPoint[];
+}

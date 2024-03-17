@@ -18,7 +18,7 @@ const routes = [
               content: 'Cloudia Homepage.'
             },
           ]
-        },    
+        },
       },
       {
         path: '/projects/category',
@@ -32,7 +32,7 @@ const routes = [
               content: 'Cloudia - Cloud Projects by Cloud Provider.'
             },
           ]
-        },    
+        },
       },
       {
         path: '/projects',
@@ -40,7 +40,7 @@ const routes = [
         component: () => import('@/views/CloudProjects.vue'),
         meta: {
           title: 'Cloudia - Cloud Projects',
-        }
+        },
       },
       {
         path: '/projects/:provider/:project_id',
@@ -48,7 +48,7 @@ const routes = [
         component: () => import('@/views/CloudProjectDetails.vue'),
         meta: {
           title: 'Cloudia - Cloud Project Details',
-        }
+        },
       },
       {
         path: '/documentation',
@@ -59,7 +59,33 @@ const routes = [
         },
         beforeEnter(to, from, next) {
           window.open('https://cloudia.readthedocs.io/', '_blank');
-        }
+        },
+      },
+      {
+        path: '/billing',
+        name: 'Billing',
+        // component: () => import('@/views/CloudBillingOverview.vue'),
+        // meta: {
+        //   title: 'Cloudia - Billing',
+        // },
+        children: [
+          {
+            path: ':providerName',
+            name: 'Billing By Provider',
+            component: () => import('@/views/CloudBillingByProvider.vue'),
+            meta: {
+              title: 'Cloudia - Billing by Provider',
+            },
+          },
+          {
+            path: 'providers',
+            name: 'Billing for all Providers',
+            component: () => import('@/views/CloudBillingOverview.vue'),
+            meta: {
+              title: 'Cloudia - Billing',
+            },
+          },
+        ]
       },
       {
         path: '/settings',
@@ -67,7 +93,7 @@ const routes = [
         component: () => import('@/views/Settings.vue'),
         meta: {
           title: 'Cloudia - Settings',
-        }
+        },
       },
       {
         path: '/about',
@@ -75,7 +101,7 @@ const routes = [
         component: () => import('@/views/About.vue'),
         meta: {
           title: 'Cloudia - About',
-        }
+        },
       },
     ],
   },
