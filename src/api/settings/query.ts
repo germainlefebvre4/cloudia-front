@@ -8,7 +8,7 @@ import {
   fetchSettings,
   fetchSettingById,
   fetchSettingByName,
-  updateSettingCloudProvider,
+  updateSetting,
 } from "./settings";
 import { IParams } from "@/types/settings.types";
 import { provide } from "vue";
@@ -29,13 +29,14 @@ export const useSettingByName = (settingName: string) => {
 };
 
 export const useSettingById = (settingId: number) => {
-  return useQuery({
-    queryKey: ["settings", settingId],
-    queryFn: () => fetchSettingById(settingId),
-  });
+  // return useQuery({
+  //   queryKey: ["settings", settingId],
+  //   queryFn: () => fetchSettingById(settingId),
+  // });
+  return fetchSettingById(settingId);
 };
 
-export const setSettingCloudProvider = (provider: string, value: any) => {
-  const settingId: number = useSettingByName(provider).data.id;
-  return updateSettingCloudProvider(settingId, value);
+export const setSetting = (settingId: number, value: any) => {
+  delete value.id;
+  return updateSetting(settingId, value);
 }

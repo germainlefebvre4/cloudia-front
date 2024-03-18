@@ -1,21 +1,22 @@
-export interface ISettingsCloudProviders {
-  aws: boolean;
-  gcp: boolean;
-  azure: boolean;
-}
-
 export interface ISettings {
   path: boolean;
-  children: ISetting[];
 }
 export interface ISetting {
-  id?: number;
+  id: number;
+  path?: string;
   key?: string;
-  value?: string;
+  value?: any;
   type?: string;
-  category?: string;
   description?: string;
-  children?: ISetting[];
+}
+
+export interface ISettingSet {
+  id: number;
+  value: any;
+}
+
+export interface ISettingSetPayload {
+  value: any;
 }
 
 export interface IParams {
