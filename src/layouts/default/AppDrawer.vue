@@ -35,7 +35,7 @@
         </template>
 
           <v-list-item
-            v-for="(item, i) in cloud_providers"
+            v-for="(item, i) in cloud_providers.filter(item => item.enabled === true)"
             :key="i"
             :prepend-icon="item.icon"
             :title="item.title"
@@ -78,31 +78,56 @@
 </template>
 
 <script lang="ts" setup>
-  import { ref } from 'vue';
-  import { Icon } from '@iconify/vue';
-  
-  const drawer = ref(true);
-  const rail = ref(false);
+import { ref, toRaw, watch } from 'vue';
+import { Icon } from '@iconify/vue';
+import {
+  useSettings,
+} from "@/api/settings/query";
+import { ISetting } from '@/types/settings.types';
+const { data: settings } = useSettings();
 
-  const open: Array<string> = [];
-  const cloud_providers = [
+const drawer = ref(true);
+const rail = ref(false);
+
+const open: Array<string> = [];
+let cloud_providers = [
+  {
+    title: 'All providers',
+    slug: 'providers',
+    icon: 'mdi-earth',
+    link: 'Billing for all Providers',
+    enabled: true,
+  }
+];
+
+const cloudProviderAWSValue = ref<Boolean>(false) || {};
+const cloudProviderGCPValue = ref<Boolean>(false) || {};
+watch(settings, (settings) => {
+  cloudProviderAWSValue.value = toRaw(settings?.data?.find(obj => { return obj.path === '/Cloud Provider/AWS' && obj.key === "enabled" }) || {id: 0, value: ""}).value;
+  cloudProviderGCPValue.value = toRaw(settings?.data?.find(obj => { return obj.path === '/Cloud Provider/GCP' && obj.key === "enabled" }) || {id: 0, value: ""}).value;
+
+  cloud_providers = [
     {
       title: 'All providers',
       slug: 'providers',
       icon: 'mdi-earth',
       link: 'Billing for all Providers',
+      enabled: true,
     },
     {
       title: 'AWS',
       slug: 'aws',
       icon: 'mdi-aws',
       link: 'Billing By Provider',
+      enabled: Boolean(cloudProviderAWSValue.value),
     },
     {
       title: 'GCP',
       slug: 'gcp',
       icon: 'mdi-google-cloud',
       link: 'Billing By Provider',
+      enabled: Boolean(cloudProviderGCPValue.value),
     }
   ];
+});
 </script>

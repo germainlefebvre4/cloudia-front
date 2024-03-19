@@ -23,12 +23,12 @@
         @change="updateSetting(cloudProviderAWS)"
       ></v-switch>
 
-      <v-
+      <v-switch
         v-model="cloudProviderGCP.value"
         label="Google Cloud"
         color="primary"
         @change="updateSetting(cloudProviderGCP)"
-      ></v->
+      ></v-switch>
 
       <v-switch
         v-model="cloudProviderAzure.value"
@@ -40,57 +40,63 @@
     </v-card-text>
   </v-card>
 
-  <v-card
-    width="800"
-    class="mrb-2 mb-2"
-    flat
-  >
-    <v-card-item>
-      <v-card-title>AWS Credentials</v-card-title>
-    </v-card-item>
+  <v-expand-transition>
+    <v-card
+      width="800"
+      class="mrb-2 mb-2"
+      flat
+      v-show="cloudProviderAWS.value"
+    >
+      <v-card-item>
+        <v-card-title>AWS Credentials</v-card-title>
+      </v-card-item>
 
-    <v-card-text>
-      <v-text-field
-        v-model="cloudProviderAWSRootAccountAccessKeyId.value"
-        label="Access Key ID"
-        color="primary"
-        @change="updateSetting(cloudProviderAWSRootAccountAccessKeyId)"
-      ></v-text-field>
+      <v-card-text>
+        <v-text-field
+          v-model="cloudProviderAWSRootAccountAccessKeyId.value"
+          label="Access Key ID"
+          color="primary"
+          @change="updateSetting(cloudProviderAWSRootAccountAccessKeyId)"
+        ></v-text-field>
 
-      <v-text-field
-        v-model="cloudProviderAWSRootAccountecretAccessKey.value"
-        label="Secret Access Key"
-        color="primary"
-        @change="updateSetting(cloudProviderAWSRootAccountecretAccessKey)"
-      ></v-text-field>
+        <v-text-field
+          v-model="cloudProviderAWSRootAccountecretAccessKey.value"
+          label="Secret Access Key"
+          color="primary"
+          @change="updateSetting(cloudProviderAWSRootAccountecretAccessKey)"
+        ></v-text-field>
 
-      <v-text-field
-        v-model="cloudProviderAWSRootAccountRegion.value"
-        label="Region"
-        color="primary"
-        @change="updateSetting(cloudProviderAWSRootAccountRegion)"
-      ></v-text-field>
-    </v-card-text>
-  </v-card>
+        <v-text-field
+          v-model="cloudProviderAWSRootAccountRegion.value"
+          label="Region"
+          color="primary"
+          @change="updateSetting(cloudProviderAWSRootAccountRegion)"
+        ></v-text-field>
+      </v-card-text>
+    </v-card>
+  </v-expand-transition>
 
-  <v-card
-    width="800"
-    class="mrb-2 mb-2"
-    flat
-  >
-    <v-card-item>
-      <v-card-title>Google Cloud Credentials</v-card-title>
-    </v-card-item>
+  <v-expand-transition>
+    <v-card
+      width="800"
+      class="mrb-2 mb-2"
+      flat
+      v-show="cloudProviderGCP.value"
+    >
+      <v-card-item>
+        <v-card-title>Google Cloud Credentials</v-card-title>
+      </v-card-item>
 
-    <v-card-text>
-      <v-textarea
-        v-model="cloudProviderGCPServiceAccountCredentials.value"
-        label="Service Account JSON Key File"
-        color="primary"
-        @change="updateSetting(cloudProviderGCPServiceAccountCredentials)"
-      ></v-textarea>
-    </v-card-text>
-  </v-card>
+      <v-card-text>
+        <v-textarea
+          v-model="cloudProviderGCPServiceAccountCredentials.value"
+          label="Service Account JSON Key File"
+          color="primary"
+          @change="updateSetting(cloudProviderGCPServiceAccountCredentials)"
+        ></v-textarea>
+      </v-card-text>
+    </v-card>
+  </v-expand-transition>
 </template>
 
 <script lang="ts" setup>
