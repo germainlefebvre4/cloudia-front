@@ -5,10 +5,11 @@
     flat
   >
     <v-card-item>
-      <v-card-title>Cloud Providers</v-card-title>
+      <v-card-title>Services</v-card-title>
     </v-card-item>
 
     <v-card-text>
+      <h2>Cloud Providers</h2>
       <v-switch
         v-model="cloudProviderDummy.value"
         label="Dummy Cloud Provider"
@@ -37,6 +38,17 @@
         @change="updateSetting(cloudProviderAzure)"
         disabled
       ></v-switch>
+
+      <h2>External Services</h2>
+
+      <v-switch
+        v-model="externalClouCarbonFootprint.value"
+        label="Cloud Carbon Footprint"
+        color="primary"
+        @change="updateSetting(externalClouCarbonFootprint)"
+      ></v-switch>
+
+      <v-divider></v-divider>
     </v-card-text>
   </v-card>
 
@@ -174,6 +186,28 @@
       </v-card-text>
     </v-card>
   </v-expand-transition>
+
+  <v-expand-transition>
+    <v-card
+      width="800"
+      class="mrb-2 mb-2"
+      flat
+      v-show="externalClouCarbonFootprint.value"
+    >
+      <v-card-item>
+        <v-card-title>Cloud Carbon Footprint</v-card-title>
+      </v-card-item>
+
+      <v-card-text>
+        <v-text-field
+          v-model="externalClouCarbonFootprintAPIUrl.value"
+          label="API URL"
+          color="primary"
+          @change="updateSetting(externalClouCarbonFootprintAPIUrl)"
+        ></v-text-field>
+      </v-card-text>
+    </v-card>
+  </v-expand-transition>
 </template>
 
 <script lang="ts" setup>
@@ -204,6 +238,8 @@
   const cloudProviderGCPCarbpnFootprintProjectId = ref<ISetting>({id: 0, value: null}) || {};
   const cloudProviderGCPCarbpnFootprintServiceAccountCredentials = ref<ISetting>({id: 0, value: null}) || {};
   const cloudProviderGCPCarbpnFootprintBigqueyDatasetName = ref<ISetting>({id: 0, value: null}) || {};
+  const externalClouCarbonFootprint = ref<ISetting>({id: 0, value: null}) || {};
+  const externalClouCarbonFootprintAPIUrl = ref<ISetting>({id: 0, value: null}) || {};
   const localSettings = ref(Object([{path: 'test', children: [{path: 'test2', children: []}]}]));
   watch(settings, (settings) => {
     const cloudProviderDummy_obj = settings?.data?.find(obj => { return obj.path === '/Cloud Provider/Dummy' && obj.key === "enabled" }) || {id: 0, value: ""};
@@ -264,6 +300,14 @@
     cloudProviderGCPCarbpnFootprintBigqueyDatasetName.value.id = Number(cloudProviderGCPCarbpnFootprintBigqueyDatasetName_obj.id);
     cloudProviderGCPCarbpnFootprintBigqueyDatasetName.value.value = String(cloudProviderGCPCarbpnFootprintBigqueyDatasetName_obj.value);
 
+    // Cloud Carbon Footprint
+    const externalClouCarbonFootprint_obj = settings?.data?.find(obj => { return obj.path === '/Cloud Carbon Footprint' && obj.key === "enabled" }) || {id: 0, value: ""};
+    externalClouCarbonFootprint.value.id = Number(externalClouCarbonFootprint_obj.id);
+    externalClouCarbonFootprint.value.value = Boolean(externalClouCarbonFootprint_obj.value);
+
+    const externalClouCarbonFootprintAPIUrl_obj = settings?.data?.find(obj => { return obj.path === '/Cloud Carbon Footprint' && obj.key === "api_url" }) || {id: 0, value: ""};
+    externalClouCarbonFootprintAPIUrl.value.id = Number(externalClouCarbonFootprintAPIUrl_obj.id);
+    externalClouCarbonFootprintAPIUrl.value.value = String(externalClouCarbonFootprintAPIUrl_obj.value);
   });
 
   const updateSetting = (obj: ISetting) => {
