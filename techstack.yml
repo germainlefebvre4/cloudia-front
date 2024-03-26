@@ -1,0 +1,446 @@
+repo_name: germainlefebvre4/cloudia-front
+report_id: e90995f5ba69b1d00495c23aa04624e4
+version: 0.1
+repo_type: Public
+timestamp: '2024-03-26T14:36:30+00:00'
+requested_by: germainlefebvre4
+provider: github
+branch: main
+detected_tools_count: 33
+tools:
+- name: TypeScript
+  description: A superset of JavaScript that compiles to clean JavaScript output
+  website_url: http://www.typescriptlang.org
+  license: Apache-2.0
+  open_source: true
+  hosted_saas: false
+  category: Languages & Frameworks
+  sub_category: Languages
+  image_url: https://img.stackshare.io/service/1612/bynNY5dJ.jpg
+  detection_source_url: https://github.com/germainlefebvre4/cloudia-front
+  detection_source: Repo Metadata
+- name: JavaScript
+  description: Lightweight, interpreted, object-oriented language with first-class
+    functions
+  website_url: https://developer.mozilla.org/en-US/docs/Web/JavaScript
+  open_source: true
+  hosted_saas: false
+  category: Languages & Frameworks
+  sub_category: Languages
+  image_url: https://img.stackshare.io/service/1209/javascript.jpeg
+  detection_source_url: https://github.com/germainlefebvre4/cloudia-front
+  detection_source: Repo Metadata
+- name: Chart.js
+  description: Simple, clean and engaging charts for designers and developers
+  website_url: http://www.chartjs.org/
+  version: 4.4.2
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: Javascript Utilities & Libraries
+  image_url: https://img.stackshare.io/service/3866/_GD1-XrU_400x400.jpg
+  detection_source_url: https://github.com/germainlefebvre4/cloudia-front/blob/main/yarn.lock
+  detection_source: package.json
+  last_updated_by: Germain Lefebvre
+  last_updated_on: 2024-03-17 14:06:56.000000000 Z
+- name: Node.js
+  description: A platform built on Chrome's JavaScript runtime for easily building
+    fast, scalable network applications
+  website_url: http://nodejs.org/
+  version: 16.0.0
+  open_source: true
+  hosted_saas: false
+  category: Languages & Frameworks
+  sub_category: Frameworks (Full Stack)
+  image_url: https://img.stackshare.io/service/1011/n1JRsFeB_400x400.png
+  detection_source_url: https://github.com/germainlefebvre4/cloudia-front/blob/main/Dockerfile
+  detection_source: Dockerfile
+  last_updated_by: Germain Lefebvre
+  last_updated_on: 2024-02-22 09:53:37.000000000 Z
+- name: Sass
+  description: Syntactically Awesome Style Sheets
+  website_url: http://sass-lang.com/
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Languages & Frameworks
+  sub_category: CSS Pre-processors / Extensions
+  image_url: https://img.stackshare.io/service/1171/jCR2zNJV.png
+  detection_source_url: https://github.com/germainlefebvre4/cloudia-front/blob/main/package.json
+  detection_source: package.json
+  last_updated_by: Germain Lefebvre
+  last_updated_on: 2024-02-22 09:53:37.000000000 Z
+- name: Vue.js
+  description: A progressive framework for building user interfaces
+  website_url: http://vuejs.org/
+  version: 3.3.13
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: Javascript MVC Frameworks
+  image_url: https://img.stackshare.io/service/3837/paeckCWC.png
+  detection_source_url: https://github.com/germainlefebvre4/cloudia-front/blob/main/yarn.lock
+  detection_source: package.json
+  last_updated_by: Germain Lefebvre
+  last_updated_on: 2024-02-22 09:53:37.000000000 Z
+- name: Vuetify
+  description: Material Component Framework for VueJS 2
+  website_url: https://vuetifyjs.com/
+  version: 3.4.7
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Languages & Frameworks
+  sub_category: Front-End Frameworks
+  image_url: https://img.stackshare.io/service/6163/PzNbCwXH.jpg
+  detection_source_url: https://github.com/germainlefebvre4/cloudia-front/blob/main/yarn.lock
+  detection_source: package.json
+  last_updated_by: Germain Lefebvre
+  last_updated_on: 2024-02-22 09:53:37.000000000 Z
+- name: Babel
+  description: Use next generation JavaScript, today.
+  website_url: http://babeljs.io/
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Build, Test, Deploy
+  sub_category: JavaScript Compilers
+  image_url: https://img.stackshare.io/service/2739/-1wfGjNw.png
+  detection_source_url: https://github.com/germainlefebvre4/cloudia-front/blob/main/package.json
+  detection_source: package.json
+  last_updated_by: Germain Lefebvre
+  last_updated_on: 2024-02-22 09:53:37.000000000 Z
+- name: Docker
+  description: Enterprise Container Platform for High-Velocity Innovation.
+  website_url: https://www.docker.com/
+  license: Apache-2.0
+  open_source: true
+  hosted_saas: false
+  category: Build, Test, Deploy
+  sub_category: Virtual Machine Platforms & Containers
+  image_url: https://img.stackshare.io/service/586/n4u37v9t_400x400.png
+  detection_source_url: https://github.com/germainlefebvre4/cloudia-front
+  detection_source: Repo Metadata
+- name: ESLint
+  description: The fully pluggable JavaScript code quality tool
+  website_url: http://eslint.org/
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Build, Test, Deploy
+  sub_category: Code Review
+  image_url: https://img.stackshare.io/service/3337/Q4L7Jncy.jpg
+  detection_source_url: https://github.com/germainlefebvre4/cloudia-front/blob/main/package.json
+  detection_source: package.json
+  last_updated_by: Germain Lefebvre
+  last_updated_on: 2024-02-22 09:53:37.000000000 Z
+- name: Git
+  description: Fast, scalable, distributed revision control system
+  website_url: http://git-scm.com/
+  open_source: true
+  hosted_saas: false
+  category: Build, Test, Deploy
+  sub_category: Version Control System
+  image_url: https://img.stackshare.io/service/1046/git.png
+  detection_source_url: https://github.com/germainlefebvre4/cloudia-front
+  detection_source: Repo Metadata
+- name: NGINX
+  description: A high performance free open source web server powering busiest sites
+    on the Internet.
+  website_url: http://nginx.org
+  open_source: false
+  hosted_saas: false
+  category: Application Hosting
+  sub_category: Web Servers
+  image_url: https://img.stackshare.io/service/1052/YMxUfyWf.png
+  detection_source_url: https://github.com/germainlefebvre4/cloudia-front/blob/main/config/nginx.conf
+  detection_source: config/nginx.conf
+  last_updated_by: Germain Lefebvre
+  last_updated_on: 2024-02-22 09:53:37.000000000 Z
+- name: Vite
+  description: Native-ESM powered web dev build tool
+  website_url: https://vitejs.dev/
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Build, Test, Deploy
+  sub_category: JS Build Tools / JS Task Runners
+  image_url: https://img.stackshare.io/service/21547/default_1aeac791cde11ff66cc0b20dcc6144eeb185c905.png
+  detection_source_url: https://github.com/germainlefebvre4/cloudia-front/blob/main/package.json
+  detection_source: package.json
+  last_updated_by: Germain Lefebvre
+  last_updated_on: 2024-02-22 09:53:37.000000000 Z
+- name: Webpack
+  description: A bundler for javascript and friends
+  website_url: http://webpack.js.org
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Build, Test, Deploy
+  sub_category: JS Build Tools / JS Task Runners
+  image_url: https://img.stackshare.io/service/1682/IMG_4636.PNG
+  detection_source_url: https://github.com/germainlefebvre4/cloudia-front/blob/main/package.json
+  detection_source: package.json
+  last_updated_by: Germain Lefebvre
+  last_updated_on: 2024-02-22 09:53:37.000000000 Z
+- name: Yarn
+  description: A new package manager for JavaScript
+  website_url: https://yarnpkg.com/
+  open_source: true
+  hosted_saas: false
+  category: Build, Test, Deploy
+  sub_category: Front End Package Manager
+  image_url: https://img.stackshare.io/service/5848/44mC-kJ3.jpg
+  detection_source_url: https://github.com/germainlefebvre4/cloudia-front/blob/main/yarn.lock
+  detection_source: yarn.lock
+  last_updated_by: Germain Lefebvre
+  last_updated_on: 2024-03-17 14:06:56.000000000 Z
+- name: npm
+  description: The package manager for JavaScript.
+  website_url: https://www.npmjs.com/
+  open_source: false
+  hosted_saas: false
+  category: Build, Test, Deploy
+  sub_category: Front End Package Manager
+  image_url: https://img.stackshare.io/service/1120/lejvzrnlpb308aftn31u.png
+  detection_source_url: https://github.com/germainlefebvre4/cloudia-front/blob/main/package.json
+  detection_source: package.json
+  last_updated_by: Germain Lefebvre
+  last_updated_on: 2024-02-22 09:53:37.000000000 Z
+- name: Lodash
+  description: A JavaScript utility library
+  website_url: https://lodash.com
+  version: 4.17.21
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: Javascript Utilities & Libraries
+  image_url: https://img.stackshare.io/service/2438/lodash.png
+  detection_source_url: https://github.com/germainlefebvre4/cloudia-front/blob/main/yarn.lock
+  detection_source: package.json
+  last_updated_by: Germain Lefebvre
+  last_updated_on: 2024-02-22 09:53:37.000000000 Z
+- name: Moment.js
+  description: A JavaScript date library for parsing, validating, manipulating, and
+    formatting dates
+  website_url: http://momentjs.com/
+  version: 2.29.4
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: Javascript Utilities & Libraries
+  image_url: https://img.stackshare.io/service/3643/Xrtdc94q_400x400.png
+  detection_source_url: https://github.com/germainlefebvre4/cloudia-front/blob/main/yarn.lock
+  detection_source: package.json
+  last_updated_by: Germain Lefebvre
+  last_updated_on: 2024-03-17 14:06:56.000000000 Z
+- name: Pinia
+  description: The Vue Store that you will enjoy using
+  website_url: https://pinia.vuejs.org/
+  open_source: false
+  hosted_saas: false
+  image_url: https://img.stackshare.io/service/48301/default_0cffd727391e16b2a8bd6edbcffc0255a3a541d0.png
+  detection_source_url: https://github.com/germainlefebvre4/cloudia-front/blob/main/package.json
+  detection_source: package.json
+  last_updated_by: Germain Lefebvre
+  last_updated_on: 2024-02-22 09:53:37.000000000 Z
+- name: axios
+  description: Promise based HTTP client for the browser and node.js
+  website_url: https://github.com/mzabriskie/axios
+  version: 1.6.2
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: Javascript Utilities & Libraries
+  image_url: https://img.stackshare.io/no-img-open-source.png
+  detection_source_url: https://github.com/germainlefebvre4/cloudia-front/blob/main/yarn.lock
+  detection_source: package.json
+  last_updated_by: Germain Lefebvre
+  last_updated_on: 2024-02-22 09:53:37.000000000 Z
+- name: yup
+  website_url: https://github.com/jquense/yup
+  open_source: false
+  hosted_saas: false
+  image_url: https://img.stackshare.io/service/10756/339286.png
+  detection_source_url: https://github.com/germainlefebvre4/cloudia-front/blob/main/package.json
+  detection_source: package.json
+  last_updated_by: Germain Lefebvre
+  last_updated_on: 2024-02-22 09:53:37.000000000 Z
+- name: vite
+  description: Native-ESM powered web dev build tool
+  package_url: https://www.npmjs.com/vite
+  version: 4.5.1
+  open_source: false
+  hosted_saas: false
+  category: Build, Test, Deploy
+  sub_category: Package Managers
+  image_url: https://img.stackshare.io/package/npm/image.png
+  detection_source_url: https://github.com/germainlefebvre4/cloudia-front/blob/main/yarn.lock
+  detection_source: package.json
+  last_updated_by: Germain Lefebvre
+  last_updated_on: 2024-02-22 09:53:37.000000000 Z
+  vulnerabilities:
+  - name: Vite dev server option `server.fs.deny` can be bypassed when hosted on case-insensitive
+      filesystem
+    cve_id: CVE-2024-23331
+    cve_url: https://github.com/advisories/GHSA-c24v-8rfc-w8vw
+    detected_date: Jan 20
+    severity: high
+    first_patched: 4.5.2
+- name: "@babel/types"
+  description: Babel Types is a Lodash-esque utility library for AST nodes
+  package_url: https://www.npmjs.com/@babel/types
+  version: 7.23.6
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: npm Packages
+  image_url: https://img.stackshare.io/package/16786/default_6e51a44775c61dcb2888547ad406a2f0cf2c344e.png
+  detection_source_url: https://github.com/germainlefebvre4/cloudia-front/blob/main/yarn.lock
+  detection_source: package.json
+  last_updated_by: Germain Lefebvre
+  last_updated_on: 2024-02-22 09:53:37.000000000 Z
+- name: "@types/node"
+  description: TypeScript definitions for Node.js
+  package_url: https://www.npmjs.com/@types/node
+  version: 18.19.3
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: npm Packages
+  image_url: https://img.stackshare.io/package/15809/default_5e5e8ac63beda29f31f1844df64d4b8247570a66.png
+  detection_source_url: https://github.com/germainlefebvre4/cloudia-front/blob/main/yarn.lock
+  detection_source: package.json
+  last_updated_by: Germain Lefebvre
+  last_updated_on: 2024-02-22 09:53:37.000000000 Z
+- name: "@vue/eslint-config-typescript"
+  description: Eslint-config-typescript for vue-cli
+  package_url: https://www.npmjs.com/@vue/eslint-config-typescript
+  version: 11.0.3
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: npm Packages
+  image_url: https://img.stackshare.io/package/18076/image.png
+  detection_source_url: https://github.com/germainlefebvre4/cloudia-front/blob/main/yarn.lock
+  detection_source: package.json
+  last_updated_by: Germain Lefebvre
+  last_updated_on: 2024-03-17 14:06:56.000000000 Z
+- name: core-js
+  description: Standard library
+  package_url: https://www.npmjs.com/core-js
+  version: 3.34.0
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: npm Packages
+  image_url: https://img.stackshare.io/package/15869/default_7c39a83d4acd952df89b1ebfdb94c8646324fbf1.png
+  detection_source_url: https://github.com/germainlefebvre4/cloudia-front/blob/main/yarn.lock
+  detection_source: package.json
+  last_updated_by: Germain Lefebvre
+  last_updated_on: 2024-02-22 09:53:37.000000000 Z
+- name: eslint-plugin-vue
+  description: Official ESLint plugin for Vue.js
+  package_url: https://www.npmjs.com/eslint-plugin-vue
+  version: 9.19.2
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: npm Packages
+  image_url: https://img.stackshare.io/package/15950/default_f49d4c116f8ea0155f4d92673b084378bba02760.png
+  detection_source_url: https://github.com/germainlefebvre4/cloudia-front/blob/main/yarn.lock
+  detection_source: package.json
+  last_updated_by: Germain Lefebvre
+  last_updated_on: 2024-02-22 09:53:37.000000000 Z
+- name: mitt
+  description: Tiny 200b functional Event Emitter / pubsub
+  package_url: https://www.npmjs.com/mitt
+  version: 3.0.1
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: npm Packages
+  image_url: https://img.stackshare.io/package/18719/default_88ba18730de3c1cd8c358a23343f72c83971e808.png
+  detection_source_url: https://github.com/germainlefebvre4/cloudia-front/blob/main/yarn.lock
+  detection_source: package.json
+  last_updated_by: Germain Lefebvre
+  last_updated_on: 2024-02-22 09:53:37.000000000 Z
+- name: moment
+  description: Parse, validate, manipulate, and display dates
+  package_url: https://www.npmjs.com/moment
+  version: 2.29.4
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: npm Packages
+  image_url: https://img.stackshare.io/package/15847/default_4479dbac220be99e50e724b2df6cf415241d71fd.png
+  detection_source_url: https://github.com/germainlefebvre4/cloudia-front/blob/main/yarn.lock
+  detection_source: package.json
+  last_updated_by: Germain Lefebvre
+  last_updated_on: 2024-03-17 14:06:56.000000000 Z
+- name: vue
+  description: Vue
+  package_url: https://www.npmjs.com/vue
+  version: 3.3.13
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: npm Packages
+  image_url: https://img.stackshare.io/package/15844/default_b71c906aeda030a5e2f1fe40bf12a93be52404ab.png
+  detection_source_url: https://github.com/germainlefebvre4/cloudia-front/blob/main/yarn.lock
+  detection_source: package.json
+  last_updated_by: Germain Lefebvre
+  last_updated_on: 2024-02-22 09:53:37.000000000 Z
+- name: vue-loader
+  description: "&gt; webpack loader for Vue Single-File Components"
+  package_url: https://www.npmjs.com/vue-loader
+  version: 17.3.1
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: npm Packages
+  image_url: https://img.stackshare.io/package/15901/default_3af1504b6f77c55205ba630fe08c472f43b95f6e.png
+  detection_source_url: https://github.com/germainlefebvre4/cloudia-front/blob/main/yarn.lock
+  detection_source: package.json
+  last_updated_by: Germain Lefebvre
+  last_updated_on: 2024-03-17 14:06:56.000000000 Z
+- name: vue-router
+  description: Official router for Vue.js 2
+  package_url: https://www.npmjs.com/vue-router
+  version: 4.2.5
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: npm Packages
+  image_url: https://img.stackshare.io/package/15969/default_261820f5687b4c88a3e8f95c71b5e8dccd34c1d7.png
+  detection_source_url: https://github.com/germainlefebvre4/cloudia-front/blob/main/yarn.lock
+  detection_source: package.json
+  last_updated_by: Germain Lefebvre
+  last_updated_on: 2024-03-17 14:06:56.000000000 Z
+- name: yup
+  description: Dead simple Object schema validation
+  package_url: https://www.npmjs.com/yup
+  version: 1.3.3
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: npm Packages
+  image_url: https://img.stackshare.io/package/17215/default_37d9ccc57ae4d32e7ff46614e4f8bb2c4ddc7964.png
+  detection_source_url: https://github.com/germainlefebvre4/cloudia-front/blob/main/yarn.lock
+  detection_source: package.json
+  last_updated_by: Germain Lefebvre
+  last_updated_on: 2024-02-22 09:53:37.000000000 Z
