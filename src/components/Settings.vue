@@ -280,7 +280,7 @@
     cloudProviderGCPBillingProjectId.value.id = Number(cloudProviderGCPBillingProjectId_obj.id);
     cloudProviderGCPBillingProjectId.value.value = String(cloudProviderGCPBillingProjectId_obj.value);
 
-    const cloudProviderGCPBillingServiceAccountCredentials_obj = settings?.data?.find(obj => { return obj.path === '/Cloud Provider/GCP/credentials/billing_project' && obj.key === "gcp_service_account_json_key_file" }) || {id: 0, value: ""};
+    const cloudProviderGCPBillingServiceAccountCredentials_obj = settings?.data?.find(obj => { return obj.path === '/Cloud Provider/GCP/credentials/billing_project' && obj.key === "gcp_service_account_json_key_file_content" }) || {id: 0, value: ""};
     cloudProviderGCPBillingServiceAccountCredentials.value.id = Number(cloudProviderGCPBillingServiceAccountCredentials_obj.id);
     cloudProviderGCPBillingServiceAccountCredentials.value.value = String(cloudProviderGCPBillingServiceAccountCredentials_obj.value);
 
@@ -292,7 +292,7 @@
     cloudProviderGCPCarbpnFootprintProjectId.value.id = Number(cloudProviderGCPCarbpnFootprintProjectId_obj.id);
     cloudProviderGCPCarbpnFootprintProjectId.value.value = String(cloudProviderGCPCarbpnFootprintProjectId_obj.value);
 
-    const cloudProviderGCPCarbpnFootprintServiceAccountCredentials_obj = settings?.data?.find(obj => { return obj.path === '/Cloud Provider/GCP/credentials/carbon_footprint_project' && obj.key === "gcp_service_account_json_key_file" }) || {id: 0, value: ""};
+    const cloudProviderGCPCarbpnFootprintServiceAccountCredentials_obj = settings?.data?.find(obj => { return obj.path === '/Cloud Provider/GCP/credentials/carbon_footprint_project' && obj.key === "gcp_service_account_json_key_file_content" }) || {id: 0, value: ""};
     cloudProviderGCPCarbpnFootprintServiceAccountCredentials.value.id = Number(cloudProviderGCPCarbpnFootprintServiceAccountCredentials_obj.id);
     cloudProviderGCPCarbpnFootprintServiceAccountCredentials.value.value = String(cloudProviderGCPCarbpnFootprintServiceAccountCredentials_obj.value);
 
