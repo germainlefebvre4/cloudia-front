@@ -27,3 +27,4 @@ Go at [https://github.com/germainlefebvre4/cloudia-project/tree/main/charts](htt
 yarn install
 yarn dev
 ```
+
